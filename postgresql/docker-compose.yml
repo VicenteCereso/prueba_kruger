@@ -1,0 +1,16 @@
+version: '3'
+services:
+    kruger:
+        image: postgres:latest
+        restart: always
+        volumes:
+            - postgresdb:/var/lib/postgresql
+        environment:                        # Creamos las variables del usuario contraseña y base de datos 
+          POSTGRES_USER: kruger              #   que se crea cuando inicia docker
+          POSTGRES_PASSWORD: kruger
+          POSTGRES_DB: prueba_kruger
+        ports:
+            - '5432:5432'
+volumes:                                # Creamos y asignamos el volumen de docker
+  postgresdb:
+    driver: local
